@@ -1,15 +1,9 @@
-/********************************************/
-function Key()
-{
-  var api_key = "your api key";
-  return api_key;
-}
+
 /********************************************/
 function buildTable() {
   
-  var apiKey = Key();
-  var queryUrl = `https://www.quandl.com/api/v3/datasets/WIKI/AMZN.json?start_date=2016-10-01&end_date=2017-10-01&collapse=monthly&api_key=${apiKey}`;
-  console.log(queryUrl)
+
+  queryUrl="/table"
   d3.json(queryUrl).then(data => {
     var table = d3.select("#summary-table");
     var tbody = table.select("tbody");
@@ -28,10 +22,9 @@ function buildTable() {
 
 /********************************************/
 function buildChart() {
-  var apiKey = Key();
-  var url = `https://www.quandl.com/api/v3/datasets/WIKI/AMZN.json?start_date=2017-01-01&end_date=2018-11-22&api_key=${apiKey}`;
+  url="/chart"
   d3.json(url).then(Plot)
-
+  
   function Plot(data) {
     var name = data.dataset.name;
     var stock = data.dataset.dataset_code;
